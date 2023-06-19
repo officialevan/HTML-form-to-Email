@@ -65,12 +65,21 @@ function validateForm(){
     }else if(!/^\d{10}$/.test(phoneNumber)){
         errors.push("Phone Number Must be a 10-Digit Number")
     }
-    // Validate Email 
-    if(email === ""){
-        errors.push("Email is required")
-    }else if (!validateEmail(email)){
-        errors.push("Invalid Email Address")
+    // Validate Email
+    if (email === "") {
+        // Check if the email is empty
+        errors.push("Email is required");
+    } else {
+        // Create a regular expression pattern for email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        // Use the test() method to check if the email matches the pattern
+        if (!emailRegex.test(email)) {
+        // If the email does not match the pattern, it is considered invalid
+        errors.push("Invalid Email Address");
+        }
     }
+  
     // Confirm Email 
     if (confirmEmail===""){
         errors.push("Confirm Email is required")
@@ -85,10 +94,10 @@ function validateForm(){
     if(contactMethod.length<2){
         errors.push("[IMPORTANT] Please select atleast 2 contact methods")
     }
-    // Validate comments section to be less than 250 characters 
-    if (comments.length<250){
-        errors.push("Comments should not exceed 250 words")
-    }
+    // // Validate comments section to be less than 250 characters 
+    // if (comments.length<250){
+    //     errors.push("Comments should not exceed 250 words")
+    // }
     // Display errors if there is one or submit form if there is'nt 
     if (errors.length > 0){
         alert("Errors: \n" +errors.join("\n"))
