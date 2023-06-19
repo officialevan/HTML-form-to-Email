@@ -19,14 +19,14 @@ function validateForm(){
     // Validate first name 
     if(firstName === ""){
         errors.push("First Name is required")
-    }else if(!/^[a-Z]+$/.test(firstName)){
+    }else if(!/^[a-zA-Z]+$/.test(firstName)){
         errors.push("First Name must not contain alphanumerical characters")
     }
 
     // Validate last name 
     if(lastName === ""){
         errors.push("Last Name is required")
-    }else if(!/^[a-Z]+$/.test(lastName)){
+    }else if(!/^[a-zA-Z]+$/.test(lastName)){
         errors.push("Last Name must not contain alphanumerical characters")
     }
     // Validate Address 
